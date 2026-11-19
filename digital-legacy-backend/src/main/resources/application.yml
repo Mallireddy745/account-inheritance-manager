@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: digital-legacy-manager
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# App custom properties
+app:
+  jwt:
+    # 256-bit base64-encoded secret key for signing tokens
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    expiration-ms: 86400000 # 24 hours
+  storage:
+    upload-dir: ./uploads/documents
+  encryption:
+    # 256-bit AES key for encrypting sensitive asset references and data at rest
+    aes-key: 636173686c6567616379736563757265
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - http://localhost:3000

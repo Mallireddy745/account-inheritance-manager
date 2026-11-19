@@ -1,0 +1,104 @@
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary-color: #475569;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #06b6d4;
+  --bg-main: #f8fafc;
+  --card-bg: #ffffff;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --sidebar-width: 260px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+.landing-nav {
+  backdrop-filter: blur(12px);
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  transition: all 0.3s ease;
+}
+
+.landing-nav-link {
+  color: #cbd5e1 !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  transition: color 0.2s ease;
+}
+
+.landing-nav-link:hover,
+.landing-nav-link.active {
+  color: #60a5fa !important;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2b5c 100%);
+  color: #ffffff;
+}
+
+.feature-step-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 1rem;
+}
+
+.feature-step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+.login-glass-card {
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  background-color: var(--card-bg);
+}
+
+.card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.sidebar-link {
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+}
+
+.border-top-3 {
+  border-top-width: 3px !important;
+}

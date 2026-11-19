@@ -1,0 +1,47 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  backend-build:
+    name: Build & Verify Backend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build Backend with Maven
+        run: |
+          cd digital-legacy-backend
+          mvn clean package -DskipTests
+
+  frontend-build:
+    name: Build & Verify Frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: digital-legacy-frontend/package-lock.json
+
+      - name: Install Dependencies & Build
+        run: |
+          cd digital-legacy-frontend
+          npm ci
+          npm run build

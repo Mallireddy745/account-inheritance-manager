@@ -1,0 +1,336 @@
+{
+  "info": {
+    "_postman_id": "digital-legacy-manager-v2",
+    "name": "Digital Legacy Manager API Collection",
+    "description": "Production API Collection for Digital Legacy Manager - covering Auth, User Panel, Admin Panel, Assets, Beneficiaries, Permissions, Emergency Requests, and System Settings.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api",
+      "type": "string"
+    },
+    {
+      "key": "userToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Authentication",
+      "item": [
+        {
+          "name": "User Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Jane Doe\",\n  \"email\": \"jane.doe@example.com\",\n  \"phoneNumber\": \"+1234567890\",\n  \"password\": \"Password@123\",\n  \"confirmPassword\": \"Password@123\",\n  \"termsConsent\": true\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] }
+          }
+        },
+        {
+          "name": "User Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.data && jsonData.data.token) {",
+                  "    pm.collectionVariables.set('userToken', jsonData.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"jane.doe@example.com\",\n  \"password\": \"Password@123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Admin Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.data && jsonData.data.token) {",
+                  "    pm.collectionVariables.set('adminToken', jsonData.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@digitallegacy.com\",\n  \"password\": \"Admin@12345\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/admin-login", "host": ["{{baseUrl}}"], "path": ["auth", "admin-login"] }
+          }
+        },
+        {
+          "name": "Current User Identity",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{userToken}}" }],
+            "url": { "raw": "{{baseUrl}}/auth/me", "host": ["{{baseUrl}}"], "path": ["auth", "me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Public Metadata",
+      "item": [
+        {
+          "name": "Get Asset Categories",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/categories", "host": ["{{baseUrl}}"], "path": ["categories"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. User Panel",
+      "item": [
+        {
+          "name": "Get User Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{userToken}}" }],
+            "url": { "raw": "{{baseUrl}}/user/dashboard", "host": ["{{baseUrl}}"], "path": ["user", "dashboard"] }
+          }
+        },
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{userToken}}" }],
+            "url": { "raw": "{{baseUrl}}/users/profile", "host": ["{{baseUrl}}"], "path": ["users", "profile"] }
+          }
+        },
+        {
+          "name": "Update User Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{userToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Jane Doe-Smith\",\n  \"phoneNumber\": \"+1987654321\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/users/profile", "host": ["{{baseUrl}}"], "path": ["users", "profile"] }
+          }
+        },
+        {
+          "name": "List User Assets",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{userToken}}" }],
+            "url": { "raw": "{{baseUrl}}/assets", "host": ["{{baseUrl}}"], "path": ["assets"] }
+          }
+        },
+        {
+          "name": "Create Digital Asset (JSON)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{userToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Primary Retirement Account\",\n  \"categoryId\": 3,\n  \"platformName\": \"Vanguard\",\n  \"assetIdentifier\": \"VAN-ACCT-44321\",\n  \"description\": \"401k retirement fund reference\",\n  \"transferInstructions\": \"Release to designated daughter upon verified event\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/assets/simple", "host": ["{{baseUrl}}"], "path": ["assets", "simple"] }
+          }
+        },
+        {
+          "name": "List Beneficiaries",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{userToken}}" }],
+            "url": { "raw": "{{baseUrl}}/beneficiaries", "host": ["{{baseUrl}}"], "path": ["beneficiaries"] }
+          }
+        },
+        {
+          "name": "Add Beneficiary",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{userToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Robert Doe\",\n  \"email\": \"robert.doe@example.com\",\n  \"phoneNumber\": \"+1234567899\",\n  \"relationship\": \"Son\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/beneficiaries", "host": ["{{baseUrl}}"], "path": ["beneficiaries"] }
+          }
+        },
+        {
+          "name": "List Permissions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{userToken}}" }],
+            "url": { "raw": "{{baseUrl}}/permissions", "host": ["{{baseUrl}}"], "path": ["permissions"] }
+          }
+        },
+        {
+          "name": "Submit Emergency Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{userToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assetId\": 1,\n  \"beneficiaryId\": 1,\n  \"reason\": \"Medical emergency documentation supplied\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/emergency-requests", "host": ["{{baseUrl}}"], "path": ["emergency-requests"] }
+          }
+        },
+        {
+          "name": "Get User Notifications",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{userToken}}" }],
+            "url": { "raw": "{{baseUrl}}/notifications", "host": ["{{baseUrl}}"], "path": ["notifications"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Admin Panel",
+      "item": [
+        {
+          "name": "Get Admin Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/dashboard", "host": ["{{baseUrl}}"], "path": ["admin", "dashboard"] }
+          }
+        },
+        {
+          "name": "List All Platform Users",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/users?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["admin", "users"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] }
+          }
+        },
+        {
+          "name": "Change User Status",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/users/2/status?status=SUSPENDED", "host": ["{{baseUrl}}"], "path": ["admin", "users", "2", "status"], "query": [{ "key": "status", "value": "SUSPENDED" }] }
+          }
+        },
+        {
+          "name": "List All Platform Assets",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/assets?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["admin", "assets"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] }
+          }
+        },
+        {
+          "name": "List All Platform Beneficiaries",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/beneficiaries?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["admin", "beneficiaries"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] }
+          }
+        },
+        {
+          "name": "List All Emergency Requests",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/emergency-requests?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["admin", "emergency-requests"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] }
+          }
+        },
+        {
+          "name": "Approve Emergency Request",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"adminNotes\": \"Approved after official validation of death certificate\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/admin/emergency-requests/1/approve", "host": ["{{baseUrl}}"], "path": ["admin", "emergency-requests", "1", "approve"] }
+          }
+        },
+        {
+          "name": "Reject Emergency Request",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rejectionReason\": \"Supporting documentation illegible or unverified\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/admin/emergency-requests/1/reject", "host": ["{{baseUrl}}"], "path": ["admin", "emergency-requests", "1", "reject"] }
+          }
+        },
+        {
+          "name": "List Security Audit Logs",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/audit-logs?page=0&size=20", "host": ["{{baseUrl}}"], "path": ["admin", "audit-logs"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "20" }] }
+          }
+        },
+        {
+          "name": "List System Settings",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/settings", "host": ["{{baseUrl}}"], "path": ["admin", "settings"] }
+          }
+        },
+        {
+          "name": "Update System Setting",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/settings/system.maintenance_mode?value=false", "host": ["{{baseUrl}}"], "path": ["admin", "settings", "system.maintenance_mode"], "query": [{ "key": "value", "value": "false" }] }
+          }
+        }
+      ]
+    }
+  ]
+}

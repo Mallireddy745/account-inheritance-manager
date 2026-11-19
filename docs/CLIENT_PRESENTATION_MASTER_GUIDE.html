@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Digital Legacy Manager - Client Presentation Master Guide</title>
+<style>
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1e293b;
+    line-height: 1.55;
+    font-size: 11pt;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+  .header-cover {
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+  }
+  .badge-tag {
+    display: inline-block;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-weight: 700;
+    font-size: 9pt;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid #bfdbfe;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  h1 {
+    font-size: 24pt;
+    color: #0f172a;
+    margin: 12px 0 6px 0;
+    font-weight: 800;
+  }
+  .subtitle {
+    font-size: 13pt;
+    color: #475569;
+    margin-bottom: 12px;
+  }
+  .meta-bar {
+    font-size: 9.5pt;
+    color: #64748b;
+  }
+  h2 {
+    font-size: 15pt;
+    color: #0f172a;
+    border-bottom: 1.5px solid #e2e8f0;
+    padding-bottom: 6px;
+    margin-top: 28px;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 12pt;
+    color: #1e3a8a;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  p {
+    margin: 6px 0 10px 0;
+  }
+  ul, ol {
+    margin: 6px 0 12px 20px;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 4px;
+  }
+  .callout-box {
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .callout-alert {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .callout-success {
+    background: #f0fdf4;
+    border-left: 4px solid #10b981;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 10pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: 700;
+  }
+  tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+  .grid-2 {
+    display: flex;
+    gap: 16px;
+    margin: 12px 0;
+  }
+  .card {
+    flex: 1;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 14px;
+    background: #ffffff;
+  }
+  .card-title {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 11pt;
+    margin-bottom: 6px;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+  .flow-box {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-family: Consolas, monospace;
+    font-size: 9pt;
+    line-height: 1.45;
+    margin: 12px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-cover">
+  <span class="badge-tag">Confidential & Proprietary • Client Presentation Master Guide</span>
+  <h1>Digital Legacy Manager</h1>
+  <div class="subtitle">Complete Technical Architecture, Business Blueprint & Client Presentation Guide</div>
+  <div class="meta-bar">
+    <strong>Platform Stack:</strong> Java 21 • Spring Boot 3.3.5 • React 18 • Vite 5 • MySQL 8.0 • AES-256-GCM Cryptography<br>
+    <strong>Target Audience:</strong> Enterprise Clients, Family Offices, Wealth Managers, Estate Attorneys & Technical Stakeholders
+  </div>
+</div>
+
+<div class="callout-box">
+  <strong>Executive Elevator Pitch (60-Second Client Opening):</strong><br>
+  <em>"Today, nearly every aspect of our lives is digital: our bank accounts, stock portfolios, cryptocurrency wallets, business domains, cloud photos, and legal deeds. Yet, when an unexpected emergency or death occurs, <strong>over 90% of these digital assets are permanently lost, locked, or tied up in years of probate litigation</strong>. Traditional paper wills cannot safely store dynamic digital passwords, while sharing credentials during your lifetime compromises your personal privacy. Our solution is the <strong>Digital Legacy Manager</strong> — an enterprise-grade digital estate vault and conditional inheritance platform that allows individuals to catalog their wealth under military-grade <strong>AES-256 encryption</strong>, designate trusted heirs under a strict <strong>Zero-Trust model</strong>, and execute <strong>legally verified, tamper-proof emergency asset transfers</strong> only after verified evidence is reviewed and approved by certified verifiers."</em>
+</div>
+
+<h2>1. The "Why": The Real-World Crisis & Market Problem</h2>
+
+<h3>1.1 The $140+ Billion Digital Graveyard</h3>
+<ul>
+  <li>Every year, billions of dollars in crypto, investments, and digital assets vanish into thin air because the owner was the <strong>only person</strong> who possessed the private keys, two-factor authentication recovery codes, or passwords.</li>
+  <li>Over <strong>90% of adults</strong> maintain significant digital assets, but fewer than <strong>7%</strong> have an estate plan that covers digital assets.</li>
+</ul>
+
+<h3>1.2 Why Traditional Paper Wills Fail in the Digital Age</h3>
+<ul>
+  <li><strong>Static vs. Dynamic:</strong> A paper will is signed once and kept in a safe. But people change passwords, rotate 2FA keys, and open new accounts every month. A paper will is outdated the day after it is signed.</li>
+  <li><strong>Premature Exposure Risk:</strong> If you write down your bank PIN or crypto recovery phrase in a paper will, everyone who reads the will (lawyers, witnesses, clerks) can steal your assets while you are still alive.</li>
+  <li><strong>Crippling Probate Delays:</strong> Traditional wills take <strong>6 to 18 months</strong> in probate court. Digital subscriptions cancel, domain names expire, and crypto accounts get locked due to inactivity long before probate ends.</li>
+</ul>
+
+<h3>1.3 Why Big-Tech Solutions (Google, Apple) Fall Short</h3>
+<ul>
+  <li>Google has <em>Inactive Account Manager</em> and Apple has <em>Legacy Contact</em>, but they only cover Google and Apple.</li>
+  <li>They <strong>cannot</strong> access your decentralized Bitcoin wallet, your private Swiss banking portal, your corporate servers, your AWS infrastructure, or your legal deeds.</li>
+  <li>They lack <strong>neutral legal verification</strong> — they rely on simple email timers, which can trigger accidentally if someone is temporarily hospitalized or offline.</li>
+</ul>
+
+<h2>2. The "What": The Product Solution</h2>
+
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">🔐 Military-Grade Encryption at Rest</div>
+    <p>All sensitive credentials, account numbers, and seed phrases are encrypted using <strong>AES-256-GCM</strong> authenticated encryption with unique initialization vectors (IVs). Direct database access yields only scrambled ciphertext.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">🛡️ Zero-Trust Asset Masking</div>
+    <p>Designated beneficiaries see masked placeholders (<code>••••••••••••</code>). File downloads and secret reveals remain cryptographically blocked until an emergency claim is formally approved.</p>
+  </div>
+</div>
+
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">👥 Independent Beneficiary Model</div>
+    <p>Beneficiaries register with their own independent credentials. They <strong>never receive or use the owner's master password</strong>, eliminating account takeover risks.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">⚖️ Legally Gated Verification Workflow</div>
+    <p>Access requires a formal claim with uploaded legal evidence (death certificate, power of attorney, medical report), independently reviewed and signed off by a certified human verifier.</p>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<h2>3. The 4 User Personas (Who Uses It & What They See)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>User Role</th>
+      <th>Primary Interface</th>
+      <th>Core Permissions & Capabilities</th>
+      <th>Security Safeguards</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Estate Owner</strong><br><code>ROLE_USER</code></td>
+      <td>Estate Control Panel<br>(<code>/user/dashboard</code>)</td>
+      <td>
+        • Catalogs assets across 11 master categories<br>
+        • Encrypts credentials with AES-256-GCM<br>
+        • Nominates beneficiaries with percentage allocations<br>
+        • Configures conditional rights (VIEW, DOWNLOAD, EMERGENCY)
+      </td>
+      <td>Retains 100% revocation rights at all times. Receives instant notifications of any inheritance claims.</td>
+    </tr>
+    <tr>
+      <td><strong>Beneficiary</strong><br><code>ROLE_BENEFICIARY</code></td>
+      <td>Beneficiary Portal<br>(<code>/user/inherited-assets</code>)</td>
+      <td>
+        • Accepts estate owner invitations<br>
+        • Views designated estate assets (masked <code>••••••••</code>)<br>
+        • Submits emergency claim with proof PDF<br>
+        • Streams unlocked files in <strong>SecurityLocker</strong>
+      </td>
+      <td>Zero access to plaintext secrets or vault files prior to formal claim approval. Independent credentials.</td>
+    </tr>
+    <tr>
+      <td><strong>Claim Verifier</strong><br><code>ROLE_VERIFIER</code></td>
+      <td>Verifier Review Center<br>(<code>/verifier/requests</code>)</td>
+      <td>
+        • Inspects incoming emergency/inheritance claims<br>
+        • Downloads and verifies uploaded legal evidence<br>
+        • Marks claims as <code>UNDER_REVIEW</code><br>
+        • Formally approves or rejects with mandatory notes
+      </td>
+      <td>Neutral third party. Cannot view owner assets or passwords; only inspects evidence and decides claim validity.</td>
+    </tr>
+    <tr>
+      <td><strong>Administrator</strong><br><code>ROLE_ADMIN</code></td>
+      <td>Admin Executive Panel<br>(<code>/admin/dashboard</code>)</td>
+      <td>
+        • Executive cross-platform metrics & user inventory<br>
+        • Instant account suspension & token revocation<br>
+        • Inspects immutable audit trails (<code>audit_logs</code>)<br>
+        • Configures platform security settings
+      </td>
+      <td>Strictly isolated login (<code>/admin/login</code>). Cannot decrypt individual user vault passwords.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. "Why These Technologies Only?": Engineering Justifications</h2>
+
+<h3>4.1 Java 21 & Spring Boot 3.3.5 (Backend Architecture)</h3>
+<ul>
+  <li><strong>Financial-Grade Static Type Safety:</strong> In estate management, runtime exceptions or unhandled async promises are unacceptable. Java 21 provides strong compile-time typing and pattern matching.</li>
+  <li><strong>Virtual Threads (Project Loom):</strong> Enables lightweight, high-throughput concurrency for streaming large encrypted files without thread pool starvation.</li>
+  <li><strong>Spring Security 6:</strong> Enterprise-grade security filter chains with granular method-level authorization (<code>@PreAuthorize</code>) preventing unauthorized endpoint calls.</li>
+  <li><strong>Spring Data JPA & Hibernate 6:</strong> ACID-compliant transaction boundaries. When an asset permission or claim status updates, it happens atomically — no partial database states.</li>
+</ul>
+
+<h3>4.2 React 18 & Vite 5 (Frontend Architecture)</h3>
+<ul>
+  <li><strong>Sub-Second Build & Instant HMR:</strong> Vite leverages native ES modules in development, eliminating the massive bundling overhead of older tools like Webpack.</li>
+  <li><strong>Concurrent Rendering & Zero Flicker:</strong> React 18 stateful hooks allow reactive UI updates (credential reveal/hide toggles, dynamic file progress bars, responsive modal dialogs) with zero page reloads.</li>
+  <li><strong>Stateless Client Architecture:</strong> Auth tokens are stored in memory and session storage, minimizing token theft vectors like cross-site scripting (XSS).</li>
+</ul>
+
+<h3>4.3 MySQL 8.0 & Flyway Migrations (Persistence Layer)</h3>
+<ul>
+  <li><strong>Strict Relational Integrity:</strong> Estate assets, percentage allocations, beneficiary links, verifier reviews, and audit trails are deeply relational. A NoSQL database lacks native foreign-key constraints and ACID transaction guarantees.</li>
+  <li><strong>Flyway Versioned Migrations:</strong> Guarantees that production, staging, and local databases are 100% synchronized across schema versions (<code>V1</code> to <code>V4</code>), preventing broken deployments.</li>
+</ul>
+
+<h3>4.4 AES-256-GCM & BCrypt (Cryptography)</h3>
+<ul>
+  <li><strong>AES-256-GCM (Authenticated Encryption):</strong> Produces a cryptographic authentication tag with every ciphertext. If an attacker modifies even a single bit of encrypted data in the database, decryption immediately fails, preventing bit-flipping attacks.</li>
+  <li><strong>BCrypt Cost Factor 12:</strong> Every user password is encrypted using 4,096 iterations of BCrypt key derivation with unique salts, making brute-force dictionary attacks impossible.</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h2>5. End-to-End Workflow Architecture</h2>
+
+<div class="flow-box">
+[Step 1: Asset Vaulting (Owner)]
+  ├── Owner enters: "Swiss Bank Account", Account #, Password, Instructions.
+  ├── Backend generates random 12-byte IV.
+  ├── Encrypts with AES-256-GCM.
+  └── Stores ciphertext in DB. Original password wiped from server memory.
+
+[Step 2: Beneficiary Linking (Owner ➔ Beneficiary)]
+  ├── Owner inputs heir's email and assigns 100% allocation.
+  ├── Heir receives invitation and registers an independent account.
+  └── Auto-link occurs via matching email.
+
+[Step 3: Zero-Trust Holding State]
+  ├── Heir opens Beneficiary Portal.
+  ├── Sees: "Swiss Bank Account (100% Allocation)".
+  ├── Secret Identifier: "••••••••••••••••" (Locked).
+  └── Files: "Access locked until claim approval".
+
+[Step 4: The Emergency Trigger]
+  ├── Owner suffers severe medical emergency or passes away.
+  ├── Heir navigates to Beneficiary Portal ➔ Claims.
+  ├── Clicks "Submit Inheritance Claim".
+  ├── Uploads official hospital report / death certificate PDF.
+  └── Reason: "Medical emergency incapacitation".
+
+[Step 5: Verifier Oversight]
+  ├── Verifier logs into Verifier Center.
+  ├── Downloads and inspects the medical certificate.
+  ├── Marks ticket "UNDER_REVIEW".
+  ├── Verifies hospital issuing authority.
+  └── Clicks "Approve Claim" and signs with mandatory review notes.
+
+[Step 6: SecurityLocker Decryption]
+  ├── Beneficiary refreshes Beneficiary Portal.
+  ├── Status changes to "APPROVED".
+  └── SecurityLocker dynamically unlocks:
+        • Password & PIN decrypt on screen.
+        • Transfer instructions are revealed.
+        • Vault document streams directly to the browser.
+  └── Event recorded in immutable audit_logs with IP, timestamp, and user IDs.
+</div>
+
+<h2>6. Security Defenses You Can Boast About to Clients</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Threat Vector</th>
+      <th>Platform Defense Mechanism</th>
+      <th>Technical Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Malicious Beneficiary trying to steal assets early</strong></td>
+      <td><strong>Zero-Trust Lock</strong></td>
+      <td>Beneficiary cannot see any passwords or files without an approved claim backed by verified legal evidence.</td>
+    </tr>
+    <tr>
+      <td><strong>Fake or Photoshopped Certificates</strong></td>
+      <td><strong>Human Verifier Gate</strong></td>
+      <td>Claims never self-execute. A licensed human verifier independently checks document validity.</td>
+    </tr>
+    <tr>
+      <td><strong>Database Compromise / Rogue DBA</strong></td>
+      <td><strong>AES-256-GCM at Rest</strong></td>
+      <td>Raw database dumps contain only scrambled ciphertext. Without the server KMS key, the data is unreadable.</td>
+    </tr>
+    <tr>
+      <td><strong>URL Manipulation / IDOR Attacks</strong></td>
+      <td><strong>Strict Ownership Queries</strong></td>
+      <td>Every query uses <code>findByIdAndUserId()</code>. If User B requests <code>/api/assets/5</code> belonging to User A, the server returns <code>404 Not Found</code>.</td>
+    </tr>
+    <tr>
+      <td><strong>Admin Privilege Abuse</strong></td>
+      <td><strong>Immutable Audit Logs</strong></td>
+      <td>Every action taken by any user or administrator is permanently written to the <code>audit_logs</code> table with IP and timestamp.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<h2>7. Client Q&A Defense Cheat Sheet</h2>
+
+<div class="callout-box">
+  <strong>Client Question: "Can platform employees or system administrators read my passwords or private keys?"</strong><br>
+  <strong>Winning Answer:</strong> No. Sensitive fields are encrypted using AES-256-GCM. In production, encryption keys are held in dedicated Hardware Security Modules (AWS KMS / Azure Key Vault / HashiCorp Vault), meaning no human database administrator or developer can view plaintext secrets.
+</div>
+
+<div class="callout-box">
+  <strong>Client Question: "What happens if a malicious beneficiary uploads a fake certificate to steal assets?"</strong><br>
+  <strong>Winning Answer:</strong> The claim cannot self-execute. An upload alone does not grant access. A certified human Verifier or estate attorney must independently inspect and validate the document against official state/hospital registries before any decryption trigger occurs. Additionally, the owner receives alerts to contest fraudulent claims.
+</div>
+
+<div class="callout-box">
+  <strong>Client Question: "What if the owner recovers from an emergency or medical coma?"</strong><br>
+  <strong>Winning Answer:</strong> Full revocability. Estate owners can revoke permissions, suspend beneficiary links, or reset vault assets at any time with a single click from their Estate Control Panel.
+</div>
+
+<div class="callout-box">
+  <strong>Client Question: "Is this compliant with digital estate laws?"</strong><br>
+  <strong>Winning Answer:</strong> Yes. The platform aligns with the Revised Uniform Fiduciary Access to Digital Assets Act (RUFADAA) and strict data privacy regulations (GDPR / HIPAA) by requiring explicit, granular owner authorization and immutable audit logs.
+</div>
+
+<div class="callout-box">
+  <strong>Client Question: "What if our organization wants to deploy this on private cloud or on-premise?"</strong><br>
+  <strong>Winning Answer:</strong> Fully containerized. The entire stack (MySQL 8, Spring Boot Backend, Vite/Nginx Frontend) is orchestrated via <code>docker-compose.yml</code> and can be deployed onto private Kubernetes clusters, AWS, Azure, or on-premise private clouds in minutes.
+</div>
+
+<div class="callout-success" style="margin-top: 30px;">
+  <strong>Summary:</strong> Digital Legacy Manager is an enterprise-ready, mathematically secure, and legally sound solution that turns the chaotic $140B digital inheritance problem into a structured, automated, and secure legacy transfer system.
+</div>
+
+</body>
+</html>

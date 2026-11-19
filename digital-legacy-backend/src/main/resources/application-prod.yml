@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/digital_legacy_manager}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  storage:
+    upload-dir: ${STORAGE_UPLOAD_DIR:/var/app/uploads}
+  encryption:
+    aes-key: ${AES_SECRET_KEY}
+  cors:
+    allowed-origins:
+      - ${FRONTEND_PROD_URL}
+
+server:
+  port: ${PORT:8080}
+
+springdoc:
+  swagger-ui:
+    enabled: false
