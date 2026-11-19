@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: digital-legacy-backend
+    runtime: java
+    plan: free
+    rootDir: digital-legacy-backend
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/digital-legacy-backend-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: dev
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:mysql://mysql-2e8ca8c1-mallireddy729-3d3.k.aivencloud.com:23608/defaultdb?sslMode=REQUIRED&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - key: SPRING_DATASOURCE_USERNAME
+        value: avnadmin
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
